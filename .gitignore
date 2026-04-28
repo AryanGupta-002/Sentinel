@@ -1,0 +1,10 @@
+node_modules/
+*.o
+*.obj
+*.dll
+*.pdb
+*.suo
+*.user
+.vscode/
+.env
+.DS_Store

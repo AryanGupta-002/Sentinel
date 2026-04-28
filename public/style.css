@@ -1,0 +1,357 @@
+/* Global Reset and Colors */
+:root {
+    --bg-off-white: #f7f7f5;
+    --text-dark: #1e293b;
+    --accent-blue: #2563eb;
+    --card-bg: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth; /* Enables the smooth scrolling */
+}
+
+body {
+    background-color: var(--bg-off-white);
+    color: var(--text-dark);
+}
+
+.fullscreen-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Header Styling */
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.main-title {
+    font-size: 5rem;
+    font-weight: 900;
+    letter-spacing: 15px;
+    margin-left: 15px; /* Offsets the letter spacing to keep it perfectly centered */
+    color: var(--text-dark);
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    color: #64748b;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.instruction-text {
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+}
+
+/* Flipped Trapezium Layout */
+.scenario-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Increased gap so bigger cards don't touch */
+    align-items: center;
+}
+
+.scenario-row {
+    display: flex;
+    gap: 30px; /* Increased gap */
+    justify-content: center;
+}
+
+/* Image Cards */
+.card {
+    width: 320px; /* INCREASED from 250px */
+    height: 200px; /* INCREASED from 160px */
+    position: relative;
+    border-radius: 16px; /* Slightly rounder edges */
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ddd; 
+}
+
+.card:hover {
+    transform: translateY(-12px); /* Moves up slightly more on hover */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25); /* Deeper shadow */
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease, transform 0.5s ease;
+}
+
+/* Added a subtle zoom effect to the image itself when hovered */
+.card:hover img {
+    opacity: 0.85;
+    transform: scale(1.08); 
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9)); /* Darker gradient for text readability */
+    color: white;
+    padding: 30px 10px 15px 10px; /* Taller gradient */
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4rem; /* INCREASED from 1.1rem */
+    letter-spacing: 1px;
+}
+
+/* --- TASK 2: SETUP SCREEN STYLES --- */
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.setup-container {
+    display: flex;
+    gap: 40px;
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 2rem;
+}
+
+.setup-panel {
+    flex: 1;
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-header {
+    border-bottom: 2px solid var(--bg-off-white);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.panel-header h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.panel-header p {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    font-size: 0.85rem;
+    color: #475569;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.modern-input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f8fafc;
+    color: var(--text-dark);
+    transition: border-color 0.3s ease;
+}
+
+.modern-input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    background-color: white;
+}
+
+.map-icon-placeholder {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    background-color: #f8fafc;
+    border-radius: 8px;
+    border: 2px dashed #cbd5e1;
+    margin-top: 10px;
+}
+
+/* Dynamic Battery Grid */
+.pack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.waiting-text {
+    color: #94a3b8;
+    font-style: italic;
+    grid-column: 1 / -1;
+}
+
+.pack-input-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.pack-input-wrapper label {
+    font-size: 0.7rem;
+    color: #64748b;
+    margin-bottom: 3px;
+}
+
+.pack-input-wrapper input {
+    padding: 10px;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Big Deploy Button */
+.deploy-button {
+    background-color: var(--text-dark);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 20px 60px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.deploy-button:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-3px);
+}
+
+/* --- TASK 3: LIVE TRACKING STYLES --- */
+
+.tracking-layout {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px;
+    height: 65vh;
+}
+
+.map-container {
+    flex: 1.5; /* Takes up slightly more space than the logs */
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+canvas {
+    background-color: #0f172a; /* Dark slate background for the maze */
+    border-radius: 8px;
+    max-width: 100%;
+    max-height: 100%;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+.log-container {
+    flex: 1;
+    background-color: #0f172a; /* Terminal vibe */
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #1e293b;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.log-header h3 {
+    color: #f8fafc;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* A cool blinking light for the terminal */
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    background-color: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #10b981;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+.log-scroll-area {
+    flex-grow: 1;
+    overflow-y: auto;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-right: 10px;
+}
+
+/* Customizing the log colors */
+.log-entry { line-height: 1.4; color: #94a3b8; }
+.log-system { color: #3b82f6; font-weight: bold; }
+.log-action { color: #eab308; } /* Yellow for backtracking/alerts */
+.log-success { color: #10b981; font-weight: bold; }
+.log-error { color: #ef4444; font-weight: bold; }
+
+/* Custom Scrollbar for the terminal */
+.log-scroll-area::-webkit-scrollbar { width: 8px; }
+.log-scroll-area::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }

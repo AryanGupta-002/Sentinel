@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Sentinel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section id="step-1-scenarios" class="fullscreen-section">
+        <div class="header">
+            <h1 class="main-title">SENTINEL</h1>
+            <p class="subtitle">Multi-Algorithmic Autonomous Path Finding Algorithm Engine</p>
+        </div>
+
+        <p class="instruction-text">Select a Mission Scenario to Begin</p>
+
+        <div class="scenario-container">
+            <div class="scenario-row top-row">
+                <div class="card" onclick="selectScenario(1)">
+                    <img src="images/1.jpg" alt="Fire Hazard">
+                    <div class="card-overlay">1. Fire Hazard</div>
+                </div>
+                <div class="card" onclick="selectScenario(2)">
+                    <img src="images/2.jpeg" alt="Forest Terrain">
+                    <div class="card-overlay">2. Forest Terrain</div>
+                </div>
+                <div class="card" onclick="selectScenario(3)">
+                    <img src="images/3.jpeg" alt="Toxic Mine">
+                    <div class="card-overlay">3. Toxic Mine</div>
+                </div>
+            </div>
+
+            <div class="scenario-row bottom-row">
+                <div class="card" onclick="selectScenario(4)">
+                    <img src="images/4.jpg" alt="Warehouse">
+                    <div class="card-overlay">4. Warehouse</div>
+                </div>
+                <div class="card" onclick="selectScenario(5)">
+                    <img src="images/5.jpeg" alt="Custom Rules">
+                    <div class="card-overlay">5. Custom Rules</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="step-2-setup" class="fullscreen-section hidden">
+        <h2 class="section-title">MISSION PARAMETERS</h2>
+
+        <p id="scenarioDisplay"
+            style="color: var(--accent-blue); font-weight: bold; font-size: 1.2rem; text-align: center; margin-top: -20px; margin-bottom: 30px; letter-spacing: 1px;">
+            Active Scenario: Awaiting Selection...
+        </p>
+
+        <div class="setup-container">
+            <div class="setup-panel">
+                <div class="panel-header">
+                    <h3>Target Environment</h3>
+                    <p>Select the topographical scan from the server.</p>
+                </div>
+
+                <div class="input-group">
+                    <label>Available Maps:</label>
+                    <select id="mapSelect" class="modern-input">
+                        <option value="">Loading maps...</option>
+                    </select>
+                </div>
+
+                <div class="map-icon-placeholder">
+                    🗺️
+                </div>
+            </div>
+
+            <div class="setup-panel" id="resourcePanel">
+                <div class="panel-header">
+                    <h3 id="resourceTitle">Resource Loadout</h3>
+                    <p id="resourceDesc">Allocate Coolent, Fuel, Battery, or Oxygen packs.</p>
+                </div>
+
+                <div id="normalLoadoutUI">
+                    <div class="input-group">
+                        <label>Number of Packs Available:</label>
+                        <input type="number" id="numPacks" class="modern-input" min="1" max="20" value="0"
+                            placeholder="e.g., 5" oninput="generatePackInputs()">
+                    </div>
+
+                    <div id="packInputsContainer" class="pack-grid">
+                        <p class="waiting-text">Enter the number of packs above to assign their values.</p>
+                    </div>
+                </div>
+
+                <div id="warehouseLoadoutUI" class="hidden">
+                    <div class="input-group" style="margin-bottom: 15px;">
+                        <label>Robot 1 Battery %:</label>
+                        <input type="number" id="robot1Battery" class="modern-input" min="1" max="100" value="100">
+                    </div>
+                    <div class="input-group">
+                        <label>Robot 2 Battery %:</label>
+                        <input type="number" id="robot2Battery" class="modern-input" min="1" max="100" value="100">
+                    </div>
+                </div>
+            </div>
+
+            <div id="customRulesPanel" class="setup-panel hidden" style="border: 1px solid var(--accent-blue);">
+                <div class="panel-header">
+                    <h3 style="color: var(--accent-blue);">Custom Protocol Overrides</h3>
+                    <p>Manual physics calibration required.</p>
+                </div>
+
+                <div class="input-group" style="margin-bottom: 15px;">
+                    <label>Select Max No. of Agents:</label>
+                    <input type="number" id="customAgents" class="modern-input" value="2" min="1" max="5">
+                </div>
+                <div class="input-group" style="margin-bottom: 15px;">
+                    <label>Proximity Threshold (Collision Radius):</label>
+                    <input type="number" id="customProx" class="modern-input" value="1" min="0" max="5">
+                </div>
+                <div class="input-group">
+                    <label>Hazard Movement Cost:</label>
+                    <input type="number" id="customCost" class="modern-input" value="2" min="1" max="10">
+                </div>
+            </div>
+        </div>
+
+        <button id="deployBtn" class="deploy-button" onclick="prepareDeployment()">DEPLOY SENTINEL</button>
+    </section>
+
+    <section id="step-3-tracking" class="fullscreen-section hidden">
+        <h2 class="section-title">LIVE TRACKING FEED</h2>
+
+        <div class="tracking-layout">
+            <div class="map-container">
+                <canvas id="gridCanvas" width="600" height="600"></canvas>
+            </div>
+
+            <div class="log-container">
+                <div class="log-header">
+                    <h3>System Terminal</h3>
+                    <div class="status-indicator"></div>
+                </div>
+                <div id="actionLog" class="log-scroll-area">
+                    <div class="log-entry log-system">[SYSTEM] Awaiting deployment initialization...</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
