@@ -3,8 +3,8 @@
 
 
 **Developer:** Aryan Gupta  
-**Institution:** Graphic Era University, Computer Science  
-**Language:** C++17  
+**Institution:** Graphic Era University, Computer Science Engineering
+**Language:** C++17 , HTML/CSS/JavaScript (Node.js server)
 
 ## 📌 Overview
 Project Sentinel is a highly optimized, multi-algorithmic pathfinding engine designed for autonomous agents operating in hazardous environments. Rather than relying on a single pathfinding solution, the engine intelligently layers multiple classical algorithms to balance local survival constraints with global resource efficiency.
@@ -24,7 +24,7 @@ The system's "brain" is built on four interlocking mathematical modules:
 - **Dynamic Grid Mapping:** Auto-parses `.txt` files to map walls, hazards, and borders.
 - **Scenario Profiles:** 5 custom rule sets (Fire, Forest, Mine, Warehouse, Custom) that alter traversal rules and battery drain rates on the fly.
 - **Aggressive Pruning:** Calculates the absolute hardware limits of the agent prior to deployment to aggressively prune unviable recursion paths, protecting CPU memory on massive (50x50+) grids.
-- **Live Terminal Visualizer:** A cross-platform rendering engine that displays the agent's memory stack, path history, and backtracking attempts in real-time at 500ms intervals.
+- **Live Terminal Visualizer:** The engine continuously streams coordinate data (`[STEP] X Y`) to the terminal. This allows developers to track the agent's recursive memory stack in real time, and serves as the primary data pipe for the interactive Node.js/HTML5 web dashboard to render beautiful, frame-by-frame pathfinding animations.
 
 ## 🛠️ Compilation & Execution
 
